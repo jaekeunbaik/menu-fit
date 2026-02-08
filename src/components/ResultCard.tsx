@@ -24,11 +24,13 @@ export default function ResultCard({ menu }: ResultCardProps) {
     return (
         <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col h-full">
             <div className="relative h-48 bg-gray-200">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                    {/* Placeholder Image using next/image with a placeholder service or just a div */}
-                    <span className="text-4xl">🍽️</span>
-                </div>
-                {/* If we had real images, we would use Next.js Image component here */}
+                <Image
+                    src={`https://loremflickr.com/400/200/${menu.engName.replace(/\s+/g, ',')},food/all`}
+                    alt={menu.name}
+                    fill
+                    className="object-cover"
+                    unoptimized
+                />
             </div>
 
             <div className="p-5 flex-1 flex flex-col">

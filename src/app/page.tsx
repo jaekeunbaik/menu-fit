@@ -19,7 +19,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
 
-  const handleUpdateContext = (key: keyof UserContext, value: string) => {
+  const handleUpdateContext = (key: keyof UserContext, value: string | number) => {
     setContext(prev => ({ ...prev, [key]: value }));
   };
 

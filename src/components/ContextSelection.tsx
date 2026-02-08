@@ -5,7 +5,7 @@ import { Sun, CloudRain, ThermometerSnowflake, Flame, Beer, Feather, Utensils, C
 
 interface ContextSelectionProps {
     selection: UserContext;
-    onUpdate: (key: keyof UserContext, value: string) => void;
+    onUpdate: (key: keyof UserContext, value: string | number) => void;
 }
 
 export default function ContextSelection({ selection, onUpdate }: ContextSelectionProps) {
@@ -43,8 +43,8 @@ export default function ContextSelection({ selection, onUpdate }: ContextSelecti
                             key={option.value}
                             onClick={() => onUpdate('weather', option.value)}
                             className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl border transition-all duration-200 ${selection.weather === option.value
-                                    ? 'bg-fresh-green/10 border-fresh-green text-fresh-green ring-2 ring-fresh-green/20 font-bold'
-                                    : 'bg-gray-50 border-gray-100 text-gray-600 hover:bg-gray-100 hover:border-gray-200'
+                                ? 'bg-fresh-green/10 border-fresh-green text-fresh-green ring-2 ring-fresh-green/20 font-bold'
+                                : 'bg-gray-50 border-gray-100 text-gray-600 hover:bg-gray-100 hover:border-gray-200'
                                 }`}
                         >
                             {option.icon}
@@ -63,8 +63,8 @@ export default function ContextSelection({ selection, onUpdate }: ContextSelecti
                             key={option.value}
                             onClick={() => onUpdate('condition', option.value)}
                             className={`flex items-center justify-center gap-2 py-3 px-4 rounded-xl border transition-all duration-200 ${selection.condition === option.value
-                                    ? 'bg-fresh-green/10 border-fresh-green text-fresh-green ring-2 ring-fresh-green/20 font-bold'
-                                    : 'bg-gray-50 border-gray-100 text-gray-600 hover:bg-gray-100 hover:border-gray-200'
+                                ? 'bg-fresh-green/10 border-fresh-green text-fresh-green ring-2 ring-fresh-green/20 font-bold'
+                                : 'bg-gray-50 border-gray-100 text-gray-600 hover:bg-gray-100 hover:border-gray-200'
                                 }`}
                         >
                             {option.icon}
@@ -72,6 +72,20 @@ export default function ContextSelection({ selection, onUpdate }: ContextSelecti
                         </button>
                     ))}
                 </div>
+
+                {/* Company Card Amount Input */}
+                {selection.condition === 'CompanyCard' && (
+                    <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                        <label className="block text-sm font-medium text-gray-700 mb-1 ml-1">사용 가능 금액 (원)</label>
+                        <input
+                            type="number"
+                            placeholder="예: 30000"
+                            className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-fresh-green focus:border-fresh-green outline-none transition-all"
+                            value={selection.amount || ''}
+                            onChange={(e) => onUpdate('amount', parseInt(e.target.value) || 0)}
+                        />
+                    </div>
+                )}
             </div>
 
             {/* Yesterday's Meal Selection */}
@@ -83,8 +97,8 @@ export default function ContextSelection({ selection, onUpdate }: ContextSelecti
                             key={option.value}
                             onClick={() => onUpdate('yesterday', option.value)}
                             className={`py-3 px-2 rounded-xl border transition-all duration-200 text-sm md:text-base ${selection.yesterday === option.value
-                                    ? 'bg-fresh-green/10 border-fresh-green text-fresh-green ring-2 ring-fresh-green/20 font-bold'
-                                    : 'bg-gray-50 border-gray-100 text-gray-600 hover:bg-gray-100 hover:border-gray-200'
+                                ? 'bg-fresh-green/10 border-fresh-green text-fresh-green ring-2 ring-fresh-green/20 font-bold'
+                                : 'bg-gray-50 border-gray-100 text-gray-600 hover:bg-gray-100 hover:border-gray-200'
                                 }`}
                         >
                             {option.label}

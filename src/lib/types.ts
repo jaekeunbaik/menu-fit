@@ -1,5 +1,6 @@
 export interface MenuItem {
     name: string;
+    engName: string;
     reason: string;
     weather: string;
 }
@@ -12,4 +13,5 @@ export interface UserContext {
     weather: WeatherOption | null;
     condition: ConditionOption | null;
     yesterday: YesterdayMenuOption | null;
+    amount?: number | null;
 }

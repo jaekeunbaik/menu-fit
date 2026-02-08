@@ -18,18 +18,19 @@ export async function getRecommendations(context: UserContext): Promise<MenuItem
     const prompt = `
     Recommend 3 lunch menus based on the following context:
     - Weather: ${context.weather}
-    - Condition: ${context.condition}
+    - Condition: ${context.condition} ${context.amount ? `(Budget: ${context.amount} KRW)` : ''}
     - Yesterday's Menu: ${context.yesterday}
 
     The response must be in strict JSON format as an array of objects. 
     Each object must have the following keys:
     - name: Menu name (in Korean)
+    - engName: Menu name in English (for image generation, e.g., "Kimchi Stew")
     - reason: A short recommendation reason (in Korean, friendly tone)
     - weather: A weather English keyword that matches the menu (Sunny, Rainy, Cold, Hot)
 
     Example JSON:
     [
-      { "name": "Menu Name", "reason": "Reason string", "weather": "Sunny" }
+      { "name": "비빔밥", "engName": "Bibimbap", "reason": "Reason string", "weather": "Sunny" }
     ]
     Do not include any markdown formatting like \`\`\`json. Just the raw JSON array.
   `;
@@ -48,9 +49,9 @@ export async function getRecommendations(context: UserContext): Promise<MenuItem
         console.error("Gemini API Error:", error);
         // Fallback to a safe default if API fails
         return [
-            { name: "비빔밥", reason: "API 연결에 실패했어요. 하지만 건강한 비빔밥은 어떠세요?", weather: "Sunny" },
-            { name: "김치찌개", reason: "따뜻한 국물로 마음을 달래보세요.", weather: "Cold" },
-            { name: "샌드위치", reason: "간단하게 한 끼 해결!", weather: "Sunny" },
+            { name: "비빔밥", engName: "Bibimbap", reason: "API 연결에 실패했어요. 하지만 건강한 비빔밥은 어떠세요?", weather: "Sunny" },
+            { name: "김치찌개", engName: "Kimchi Stew", reason: "따뜻한 국물로 마음을 달래보세요.", weather: "Cold" },
+            { name: "샌드위치", engName: "Sandwich", reason: "간단하게 한 끼 해결!", weather: "Sunny" },
         ];
     }
 }
