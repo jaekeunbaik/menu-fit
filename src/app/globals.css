@@ -3,11 +3,14 @@
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-fresh-green: var(--fresh-green);
 }
 
 :root {
   --background: #f2f4f6;
   --foreground: #171717;
+  --fresh-green: #22c55e;
+  /* green-500 */
 }
 
 body {

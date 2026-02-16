@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'image.pollinations.ai',
+        hostname: 'tse4.mm.bing.net',
       },
     ],
   },

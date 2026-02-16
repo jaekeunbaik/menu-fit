@@ -25,10 +25,10 @@ export default function ResultCard({ menu }: ResultCardProps) {
         <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col h-full">
             <div className="relative h-48 bg-gray-200">
                 <Image
-                    src={`https://image.pollinations.ai/prompt/${encodeURIComponent(menu.engName + ' delicious food k-food photography')}`}
+                    src={`https://tse4.mm.bing.net/th?q=${encodeURIComponent(menu.name + ' 음식')}&w=800&h=600&c=7`}
                     alt={menu.name}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform hover:scale-110 duration-500"
                     unoptimized
                 />
             </div>
