@@ -25,7 +25,7 @@ export default function ResultCard({ menu }: ResultCardProps) {
         <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col h-full">
             <div className="relative h-48 bg-gray-200">
                 <Image
-                    src={`https://loremflickr.com/400/200/${menu.engName.replace(/\s+/g, ',')},food/all`}
+                    src={`https://image.pollinations.ai/prompt/${encodeURIComponent(menu.engName + ' delicious food k-food photography')}`}
                     alt={menu.name}
                     fill
                     className="object-cover"
