@@ -7,6 +7,7 @@ import ContextSelection from '@/components/ContextSelection';
 import ResultCard from '@/components/ResultCard';
 import { getRecommendations } from '@/lib/api';
 import { Sparkles } from 'lucide-react';
+import AdUnit from '@/components/AdUnit';
 
 export default function Home() {
   const [context, setContext] = useState<UserContext>({
@@ -98,6 +99,9 @@ export default function Home() {
             )}
           </div>
         )}
+      </div>
+      <div className="mt-20 flex justify-center">
+        <AdUnit slot="9876543210" />
       </div>
     </main>
   );
