@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Menu-Fit | 맞춤형 점심 추천",
   description: "날씨와 컨디션에 딱 맞는 점심 메뉴를 추천받으세요!",
+  other: {
+    "google-adsense-account": "ca-pub-4403789108346139",
+  },
 };
 
 export default function RootLayout({
