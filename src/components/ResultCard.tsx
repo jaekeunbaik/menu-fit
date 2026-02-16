@@ -3,6 +3,7 @@
 import { MenuItem } from '@/lib/types';
 import { MapPin, Sun, CloudRain, ThermometerSnowflake, Flame } from 'lucide-react';
 import Image from 'next/image';
+import { getKakaoMapUrl, getNaverMapUrl } from '@/lib/mapUtils';
 
 interface ResultCardProps {
     menu: MenuItem;
@@ -19,7 +20,6 @@ export default function ResultCard({ menu }: ResultCardProps) {
         }
     };
 
-    const gmapUrl = `https://www.google.com/maps/search/주변+${encodeURIComponent(menu.name)}`;
 
     return (
         <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100 flex flex-col h-full">
@@ -46,15 +46,26 @@ export default function ResultCard({ menu }: ResultCardProps) {
                     {menu.reason}
                 </p>
 
-                <a
-                    href={gmapUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-fresh-green/10 text-fresh-green font-bold hover:bg-fresh-green hover:text-white transition-colors duration-200"
-                >
-                    <MapPin className="w-4 h-4" />
-                    근처 맛집 찾기
-                </a>
+                <div className="flex gap-2">
+                    <a
+                        href={getKakaoMapUrl(menu.name)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-[#FEE500] text-black font-bold hover:brightness-95 transition-all duration-200"
+                    >
+                        <MapPin className="w-4 h-4" />
+                        카카오맵
+                    </a>
+                    <a
+                        href={getNaverMapUrl(menu.name)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-[#03C75A] text-white font-bold hover:brightness-95 transition-all duration-200"
+                    >
+                        <MapPin className="w-4 h-4" />
+                        네이버지도
+                    </a>
+                </div>
             </div>
         </div>
     );
